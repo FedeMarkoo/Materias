@@ -1,0 +1,10 @@
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\bin\Debug\Materias.exe.config
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\bin\Debug\Materias.exe
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\bin\Debug\Materias.pdb
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\obj\Debug\Materias.Form1.resources
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\obj\Debug\Materias.Properties.Resources.resources
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\obj\Debug\Materias.csproj.GenerateResource.Cache
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\obj\Debug\Materias.csproj.CoreCompileInputs.cache
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\obj\Debug\Materias.exe
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\obj\Debug\Materias.pdb
+C:\Users\fedem\Escritorio\Proyectos\Materias\Materias\obj\Debug\Materias.csprojResolveAssemblyReference.cache
