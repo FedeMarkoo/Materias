@@ -439,6 +439,7 @@
             this.ComicionesL.Sorted = true;
             this.ComicionesL.TabIndex = 27;
             this.ComicionesL.SelectedValueChanged += new System.EventHandler(this.ComicionesL_SelectedValueChanged);
+            this.ComicionesL.DoubleClick += new System.EventHandler(this.Agregar_Click);
             // 
             // MateriasL
             // 
