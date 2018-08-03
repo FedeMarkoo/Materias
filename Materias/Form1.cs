@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Net;
+using System.Drawing.Imaging;
 
 namespace Materias
 {
@@ -61,7 +62,7 @@ namespace Materias
         {
             NotasL.Items.Clear();
             MateriasL.Items.Clear();
-            string[] Materias = File.ReadAllLines(direccion + "\\PlanDeEstudio.csv",Encoding.UTF7);
+            string[] Materias = File.ReadAllLines(direccion + "\\PlanDeEstudio.csv", Encoding.UTF7);
             foreach (string line in Materias)
             {
                 string[] cad = line.Split(';');
@@ -190,10 +191,10 @@ namespace Materias
             A_Eliminar.Items.Clear();
             bool ocupado = false;
             bool repetido = false;
-            bool errorextra= false;
+            bool errorextra = false;
             string ocu = "";
             string[] line = (MateriasL.SelectedItem.ToString() + "  ads  " + ComicionesL.SelectedItem.ToString().Split(' ')[1] + "  " + ComicionesL.SelectedItem.ToString().Split(' ')[2]).Split(new String[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
-            Comprobar(line, ref ocupado, ref ocu, ref repetido,ref errorextra);
+            Comprobar(line, ref ocupado, ref ocu, ref repetido, ref errorextra);
             if (repetido && MessageBox.Show("La materia esta repetida. Desea reemplazar la comision?", "Materia repetida!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Eliminar();
@@ -278,9 +279,9 @@ namespace Materias
             }
         }
 
-        private void Comprobar(string[] line, ref bool ocupado, ref string ocu, ref bool repetido,ref bool error)
+        private void Comprobar(string[] line, ref bool ocupado, ref string ocu, ref bool repetido, ref bool error)
         {
-            if(line[4].Length<5 || line[3].Length==0)
+            if (line[4].Length < 5 || line[3].Length == 0)
             {
                 error = true;
                 MessageBox.Show("La materia no tiene dias o turno...");
@@ -475,6 +476,27 @@ namespace Materias
                 IngresodeMateria.Text = NotasL.SelectedItem.ToString();
             if (NotasL.SelectedItems.Count == 0)
                 NotasL.SetSelected(0, true);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+            Bitmap memoryImage;
+            using (Graphics myGraphics = CreateGraphics())
+            {
+                memoryImage = new Bitmap(930, 175, myGraphics);
+            }
+            using (Graphics memoryGraphics = Graphics.FromImage(memoryImage))
+            {
+                int sourceX = Location.X + 8;
+                int sourceY = Location.Y + 54;
+                memoryGraphics.CopyFromScreen(sourceX, sourceY, 0, 0, new Size(930, 175));
+            }
+
+            //Mostrar aquí el SaveFileDialog.
+            //Si el usuario no presiona cancelar, proceder a recuperar el nombre del archivo.
+            memoryImage.Save("Cronograma.png", ImageFormat.Png);
+
         }
     }
 }

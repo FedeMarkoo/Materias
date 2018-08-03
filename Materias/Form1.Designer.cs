@@ -73,6 +73,7 @@
             this.NotasV = new System.Windows.Forms.TextBox();
             this.NotasL = new System.Windows.Forms.ListBox();
             this.NotasM = new System.Windows.Forms.ListBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -90,6 +91,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.button1);
@@ -435,7 +437,7 @@
             this.ComicionesL.FormattingEnabled = true;
             this.ComicionesL.Location = new System.Drawing.Point(224, 176);
             this.ComicionesL.Name = "ComicionesL";
-            this.ComicionesL.Size = new System.Drawing.Size(317, 277);
+            this.ComicionesL.Size = new System.Drawing.Size(317, 251);
             this.ComicionesL.Sorted = true;
             this.ComicionesL.TabIndex = 27;
             this.ComicionesL.SelectedValueChanged += new System.EventHandler(this.ComicionesL_SelectedValueChanged);
@@ -446,7 +448,7 @@
             this.MateriasL.FormattingEnabled = true;
             this.MateriasL.Location = new System.Drawing.Point(3, 176);
             this.MateriasL.Name = "MateriasL";
-            this.MateriasL.Size = new System.Drawing.Size(215, 277);
+            this.MateriasL.Size = new System.Drawing.Size(215, 251);
             this.MateriasL.Sorted = true;
             this.MateriasL.TabIndex = 26;
             this.MateriasL.SelectedValueChanged += new System.EventHandler(this.MateriasL_SelectedValueChanged);
@@ -572,6 +574,16 @@
             this.NotasM.Sorted = true;
             this.NotasM.TabIndex = 0;
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(419, 429);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(121, 23);
+            this.button8.TabIndex = 57;
+            this.button8.Text = "Guarda como Imagen";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -638,6 +650,7 @@
         private System.Windows.Forms.Label EtiquetaM;
         private System.Windows.Forms.Label EtiquetaN;
         private System.Windows.Forms.TextBox IngresodeMateria;
+        private System.Windows.Forms.Button button8;
     }
 }
 
