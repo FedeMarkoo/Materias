@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -73,16 +74,19 @@
             this.NotasV = new System.Windows.Forms.TextBox();
             this.NotasL = new System.Windows.Forms.ListBox();
             this.NotasM = new System.Windows.Forms.ListBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(-1, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -130,6 +134,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Comisiones";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(419, 429);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(121, 23);
+            this.button8.TabIndex = 57;
+            this.button8.Text = "Guarda como Imagen";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button5
             // 
@@ -574,15 +588,27 @@
             this.NotasM.Sorted = true;
             this.NotasM.TabIndex = 0;
             // 
-            // button8
+            // tabPage3
             // 
-            this.button8.Location = new System.Drawing.Point(419, 429);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(121, 23);
-            this.button8.TabIndex = 57;
-            this.button8.Text = "Guarda como Imagen";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.tabPage3.Controls.Add(this.webBrowser1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(925, 457);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Intraconsulta";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(3, 3);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(919, 451);
+            this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Url = new System.Uri("http://alumno2.unlam.edu.ar/index.jsp", System.UriKind.Absolute);
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // Form1
             // 
@@ -599,6 +625,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -651,6 +678,8 @@
         private System.Windows.Forms.Label EtiquetaN;
         private System.Windows.Forms.TextBox IngresodeMateria;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 
