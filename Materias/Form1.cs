@@ -104,7 +104,7 @@ namespace Materias
                 int i = 0;
                 foreach (string line in File.ReadAllLines(dirofe))
                 {
-                    string[] cad = line.Replace("�", "").Replace(" ;",";").Split(';');
+                    string[] cad = line.Replace("�", "").Replace(" ;", ";").Split(';');
                     if (cad[0] == "")
                     {
                         cad[0] = temp;
@@ -535,7 +535,7 @@ namespace Materias
         private void descargarOferta(String texto)
         {
             string pattern = @"([0-9]+|d>[A-ZÑ']+ ?[A-ZÑ ']+|(?:[A-Z][a-z])+[^&<]+|A distancia|>[A-Z]|&nbsp;|d>DISE.+O DE SISTEMAS|d>[A-Z \-\.]+\(Electiva I-II-III\))(?:&nbsp;)?<";
-            File.WriteAllText("oferta.csv", "Código ; Descripción ; Cod. Comisión ; Turno ; Días ; Detalle \r\n");
+            String contenido = "Código ; Descripción ; Cod. Comisión ; Turno ; Días ; Detalle \r\n";
             RegexOptions options = RegexOptions.Multiline;
             int i = 0;
             foreach (Match m in Regex.Matches(texto, pattern, options))
@@ -549,16 +549,21 @@ namespace Materias
                         i = 0;
                         continue;
                     }
+
                     if (i == 2 && value.Length > 2)
                         value = value.Substring(1);
-                    File.AppendAllText("oferta.csv", value);
+                    if (i == 1 && value.StartsWith("0"))
+                        contenido += value.Substring(1);
+                    else
+                        contenido += value;
                     if (i > 2)
-                        File.AppendAllText("oferta.csv", " ");
-                    File.AppendAllText("oferta.csv", ";");
+                        contenido += " ";
+                    contenido += ";";
                     if (i == 5)
-                        File.AppendAllText("oferta.csv", "DETALLE \r\n");
+                        contenido += "DETALLE \r\n";
                 }
             }
+            File.WriteAllText("oferta.csv", contenido);
         }
 
 
