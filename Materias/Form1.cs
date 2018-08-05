@@ -91,6 +91,11 @@ namespace Materias
                     NotasL.Items.Add(cad[0] + "  " + cad[1]);
                 }
             }
+            cargaOferta();
+        }
+
+        private void cargaOferta()
+        {
             string dirofe = direccion + "\\Oferta.csv";
             if (File.Exists(dirofe))
             {
@@ -99,7 +104,7 @@ namespace Materias
                 int i = 0;
                 foreach (string line in File.ReadAllLines(dirofe))
                 {
-                    string[] cad = line.Replace("�", "").Split(';');
+                    string[] cad = line.Replace("�", "").Replace(" ;",";").Split(';');
                     if (cad[0] == "")
                     {
                         cad[0] = temp;
@@ -522,19 +527,20 @@ namespace Materias
                 string documentText = webBrowser1.DocumentText;
                 documentText = documentText.Substring(documentText.IndexOf("<tbody>") + 8);
                 documentText = documentText.Substring(0, documentText.IndexOf("</tbody>"));
-                Oferta = descargarOferta(documentText);
+                descargarOferta(documentText);
+                cargaOferta();
             }
         }
 
-        private String[][] descargarOferta(String texto)
+        private void descargarOferta(String texto)
         {
-            string pattern = @"([0-9]+|d>[A-ZÑ']+ ?[A-ZÑ ']+|(?:[A-Z][a-z])+[^&<]+|A distancia|>[A-Z]|&nbsp;)(?:&nbsp;)?<";
+            string pattern = @"([0-9]+|d>[A-ZÑ']+ ?[A-ZÑ ']+|(?:[A-Z][a-z])+[^&<]+|A distancia|>[A-Z]|&nbsp;|d>DISE.+O DE SISTEMAS|d>[A-Z \-\.]+\(Electiva I-II-III\))(?:&nbsp;)?<";
             File.WriteAllText("oferta.csv", "Código ; Descripción ; Cod. Comisión ; Turno ; Días ; Detalle \r\n");
             RegexOptions options = RegexOptions.Multiline;
             int i = 0;
             foreach (Match m in Regex.Matches(texto, pattern, options))
             {
-                string value = m.Value.Replace("&nbsp;", "").Replace("<", "").Replace(">", "");
+                string value = m.Value.Replace("&nbsp;", "").Replace("<", "").Replace(">", "").Replace("�", "Ñ");
                 if (!value.Contains("DETALLE"))
                 {
                     i++;
@@ -543,7 +549,7 @@ namespace Materias
                         i = 0;
                         continue;
                     }
-                    if (i == 2&&value.Length>2)
+                    if (i == 2 && value.Length > 2)
                         value = value.Substring(1);
                     File.AppendAllText("oferta.csv", value);
                     if (i > 2)
@@ -553,7 +559,6 @@ namespace Materias
                         File.AppendAllText("oferta.csv", "DETALLE \r\n");
                 }
             }
-            return null;
         }
 
 
